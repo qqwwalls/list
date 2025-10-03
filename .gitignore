@@ -1,0 +1,17 @@
+# Visual Studio папки
+.vs/
+Debug/
+Release/
+x64/
+ipch/
+
+# Visual Studio файли
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Службові VS файли
+*.vsidx
+*.VC.db
+*.VC.opendb
