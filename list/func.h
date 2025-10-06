@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 const int MAX_TASKS = 100;
 struct Task {
     char title[50];
@@ -32,7 +34,19 @@ void add_task(Task tasks[], int* count) {
     cout << "List done!\n";
 }
 // Відображення всіх справ
-void show_task(Task tasks[], int* count);
+void show_task(Task tasks[], int* count) {
+    if (*count == 0) {
+        cout << "List is empty!\n";
+        return;
+    }
+    for (int i = 0; i < *count; i++) {
+        cout << "\n--- List " << i + 1 << " ---\n";
+        cout << "Name: " << tasks[i].title << '\n';
+        cout << "Priority: " << tasks[i].priority << '\n';
+        cout << "Description: " << tasks[i].description << '\n';
+        cout << "Date and time: " << tasks[i].deadline << '\n';
+    }
+}
 
 // Видалення справи
 void remove_task(Task tasks[], int* count, int index);
