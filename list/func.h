@@ -62,7 +62,30 @@ void remove_task(Task tasks[], int* count, int index) {
 }
 
 // Редагування справи
-void edit_task(Task tasks[], int *count, int index);
+void edit_task(Task tasks[], int *count, int index){
+    if (index < 0 || index >= *count) {
+        cout << "Invalid index!\n";
+        return;
+    }
+
+    cout << "Editing task: " << tasks[index].title << endl;
+
+    cout << "Enter new name: ";
+    cin.ignore();
+    cin.getline(tasks[index].title, 50);
+
+    cout << "Enter new priority (1-3): ";
+    cin >> tasks[index].priority;
+    cin.ignore();
+
+    cout << "Enter new description: ";
+    cin.getline(tasks[index].description, 100);
+
+    cout << "Enter new date: ";
+    cin.getline(tasks[index].deadline, 20);
+
+    cout << "Task updated!\n";
+}
 
 // Пошук за назвою
 void search_by_title(Task tasks[], int *count, const char title[]);
