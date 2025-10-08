@@ -119,7 +119,12 @@ void search_by_date(Task tasks[], int* count, const char deadline[]) {
 }
 
 // Відображення завдань на день
-void show_tasks_for_day(Task tasks[], int *count, const char date[]);
+void show_tasks_for_day(Task tasks[], int* count, const char date[]) {
+    cout << "\nTasks for day " << date << ":\n";
+    for (int i = 0; i < *count; i++)
+        if (strcmp(tasks[i].deadline, date) == 0)
+            cout << tasks[i].title << endl;
+}
 
 // Відображення завдань на тиждень
 void show_tasks_for_week(Task tasks[], int *count, const char startDate[], const char endDate[]);
