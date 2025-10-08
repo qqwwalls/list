@@ -49,7 +49,17 @@ void show_task(Task tasks[], int* count) {
 }
 
 // Видалення справи
-void remove_task(Task tasks[], int* count, int index);
+void remove_task(Task tasks[], int* count, int index) {
+    if (index < 0 || index >= *count) {
+        cout << "Wrong number!\n";
+        return;
+    }
+    for (int i = index; i < *count - 1; i++) {
+        tasks[i] = tasks[i + 1];  
+    }
+    (*count)--;
+    cout << "Task is deleted!\n";
+}
 
 // Редагування справи
 void edit_task(Task tasks[], int *count, int index);
