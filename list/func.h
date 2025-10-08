@@ -103,7 +103,12 @@ void search_by_priority(Task tasks[], int* count, int priority) {
             cout << i + 1 << ". " << tasks[i].title << endl;
 }
 // Пошук за описом
-void search_by_description(Task tasks[], int *count, const char desc[]);
+void search_by_description(Task tasks[], int* count, const char desc[]) {
+    cout << "\nSearch by description:\n";
+    for (int i = 0; i < *count; i++)
+        if (strstr(tasks[i].description, desc))
+            cout << i + 1 << ". " << tasks[i].title << endl;
+}
 
 // Пошук за датою
 void search_by_date (Task tasks[], int *count, const char deadline[]);
