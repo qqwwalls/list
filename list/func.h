@@ -88,7 +88,12 @@ void edit_task(Task tasks[], int *count, int index){
 }
 
 // Пошук за назвою
-void search_by_title(Task tasks[], int *count, const char title[]);
+void search_by_title(Task tasks[], int* count, const char title[]) {
+    cout << "\nSearch by title:\n";
+    for (int i = 0; i < *count; i++)
+        if (strstr(tasks[i].title, title))
+            cout << i + 1 << ". " << tasks[i].title << endl;
+}
 
 // Пошук за пріоритетом
 void search_by_priority(Task tasks[], int *count, int priority);
