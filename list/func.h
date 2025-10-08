@@ -96,8 +96,12 @@ void search_by_title(Task tasks[], int* count, const char title[]) {
 }
 
 // Пошук за пріоритетом
-void search_by_priority(Task tasks[], int *count, int priority);
-
+void search_by_priority(Task tasks[], int* count, int priority) {
+    cout << "\nSearch by priority " << priority << ":\n";
+    for (int i = 0; i < *count; i++)
+        if (tasks[i].priority == priority)
+            cout << i + 1 << ". " << tasks[i].title << endl;
+}
 // Пошук за описом
 void search_by_description(Task tasks[], int *count, const char desc[]);
 
