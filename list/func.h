@@ -25,9 +25,11 @@ void add_task(Task tasks[], int* count) {
     cin.ignore();
 
     cout << "Enter description: ";
+    cin.ignore();
     cin.getline(tasks[*count].description, 100);
 
     cout << "Enter date and time: ";
+    cin.ignore();
     cin.getline(tasks[*count].deadline, 20);
 
     (*count)++;                              
@@ -79,9 +81,11 @@ void edit_task(Task tasks[], int *count, int index){
     cin.ignore();
 
     cout << "Enter new description: ";
+    cin.ignore();
     cin.getline(tasks[index].description, 100);
 
     cout << "Enter new date: ";
+    cin.ignore();
     cin.getline(tasks[index].deadline, 20);
 
     cout << "Task updated!\n";
