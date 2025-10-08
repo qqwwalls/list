@@ -134,7 +134,12 @@ void show_tasks_for_week(Task tasks[], int* count, const char startDate[], const
 }
 
 // Відображення завдань на місяць
-void show_tasks_for_month(Task tasks[], int *count, const char month[]);
+void show_tasks_for_month(Task tasks[], int* count, const char month[]) {
+    cout << "\nTasks for month " << month << ":\n";
+    for (int i = 0; i < *count; i++)
+        if (strstr(tasks[i].deadline, month))
+            cout << tasks[i].title << endl;
+}
 
 // Сортування за пріоритетом
 void sort_by_priority(Task tasks[], int *count);
