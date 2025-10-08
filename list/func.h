@@ -111,7 +111,12 @@ void search_by_description(Task tasks[], int* count, const char desc[]) {
 }
 
 // Пошук за датою
-void search_by_date (Task tasks[], int *count, const char deadline[]);
+void search_by_date(Task tasks[], int* count, const char deadline[]) {
+    cout << "\nSearch by date:\n";
+    for (int i = 0; i < *count; i++)
+        if (strcmp(tasks[i].deadline, deadline) == 0)
+            cout << i + 1 << ". " << tasks[i].title << endl;
+}
 
 // Відображення завдань на день
 void show_tasks_for_day(Task tasks[], int *count, const char date[]);
