@@ -127,7 +127,11 @@ void show_tasks_for_day(Task tasks[], int* count, const char date[]) {
 }
 
 // Відображення завдань на тиждень
-void show_tasks_for_week(Task tasks[], int *count, const char startDate[], const char endDate[]);
+void show_tasks_for_week(Task tasks[], int* count, const char startDate[], const char endDate[]) {
+    cout << "\n(Week " << startDate << " - " << endDate << "):\n";
+    for (int i = 0; i < *count; i++)
+        cout << tasks[i].title << " | " << tasks[i].deadline << endl;
+}
 
 // Відображення завдань на місяць
 void show_tasks_for_month(Task tasks[], int *count, const char month[]);
