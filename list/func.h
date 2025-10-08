@@ -151,4 +151,10 @@ void sort_by_priority(Task tasks[], int* count) {
 }
 
 // Сортування за датою
-void sort_by_deadline (Task tasks[], int *count);
+void sort_by_deadline(Task tasks[], int* count) {
+    for (int i = 0; i < *count - 1; i++)
+        for (int j = i + 1; j < *count; j++)
+            if (strcmp(tasks[i].deadline, tasks[j].deadline) > 0)
+                swap(tasks[i], tasks[j]);
+    cout << "Sorted by date!\n";
+}
