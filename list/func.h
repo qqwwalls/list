@@ -1,40 +1,44 @@
 #pragma once
 #include <iostream>
+#include <cstring>
 using namespace std;
+
 const int MAX_TASKS = 100;
+
 struct Task {
     char title[50];
     int priority;         // Пріоритет (1 - низький, 2 - середній, 3 - високий)
     char description[100];
     char deadline[20];    // Дата, час 
 };
+
 /********************/
 // Додавання справи
 void add_task(Task tasks[], int* count) {
-    if (*count >= MAX_TASKS) {                
+    if (*count >= MAX_TASKS) {
         cout << "List overflow!\n";
         return;
     }
 
+    cin.ignore(); 
+
     cout << "Enter name: ";
-    cin.ignore();                               
-    cin.getline(tasks[*count].title, 50);     
+    cin.getline(tasks[*count].title, 50);
 
     cout << "Enter priority (1-low,2-middle,3-high): ";
     cin >> tasks[*count].priority;
     cin.ignore();
 
     cout << "Enter description: ";
-    cin.ignore();
     cin.getline(tasks[*count].description, 100);
 
     cout << "Enter date and time: ";
-    cin.ignore();
     cin.getline(tasks[*count].deadline, 20);
 
-    (*count)++;                              
+    (*count)++;
     cout << "List done!\n";
 }
+
 // Відображення всіх справ
 void show_task(Task tasks[], int* count) {
     if (*count == 0) {
@@ -57,14 +61,14 @@ void remove_task(Task tasks[], int* count, int index) {
         return;
     }
     for (int i = index; i < *count - 1; i++) {
-        tasks[i] = tasks[i + 1];  
+        tasks[i] = tasks[i + 1];
     }
     (*count)--;
     cout << "Task is deleted!\n";
 }
 
 // Редагування справи
-void edit_task(Task tasks[], int *count, int index){
+void edit_task(Task tasks[], int* count, int index) {
     if (index < 0 || index >= *count) {
         cout << "Invalid index!\n";
         return;
@@ -72,8 +76,9 @@ void edit_task(Task tasks[], int *count, int index){
 
     cout << "Editing task: " << tasks[index].title << endl;
 
+    cin.ignore(); 
+
     cout << "Enter new name: ";
-    cin.ignore();
     cin.getline(tasks[index].title, 50);
 
     cout << "Enter new priority (1-3): ";
@@ -81,11 +86,9 @@ void edit_task(Task tasks[], int *count, int index){
     cin.ignore();
 
     cout << "Enter new description: ";
-    cin.ignore();
     cin.getline(tasks[index].description, 100);
 
     cout << "Enter new date: ";
-    cin.ignore();
     cin.getline(tasks[index].deadline, 20);
 
     cout << "Task updated!\n";
@@ -94,32 +97,69 @@ void edit_task(Task tasks[], int *count, int index){
 // Пошук за назвою
 void search_by_title(Task tasks[], int* count, const char title[]) {
     cout << "\nSearch by title:\n";
-    for (int i = 0; i < *count; i++)
-        if (strstr(tasks[i].title, title))
-            cout << i + 1 << ". " << tasks[i].title << endl;
+    bool found = false;
+    for (int i = 0; i < *count; i++) {
+        if (strstr(tasks[i].title, title)) {
+            found = true;
+            cout << "\n--- Task " << i + 1 << " ---\n";
+            cout << "Name: " << tasks[i].title << '\n';
+            cout << "Priority: " << tasks[i].priority << '\n';
+            cout << "Description: " << tasks[i].description << '\n';
+            cout << "Date: " << tasks[i].deadline << '\n';
+        }
+    }
+    if (!found) cout << "No matches found!\n";
 }
 
 // Пошук за пріоритетом
 void search_by_priority(Task tasks[], int* count, int priority) {
     cout << "\nSearch by priority " << priority << ":\n";
-    for (int i = 0; i < *count; i++)
-        if (tasks[i].priority == priority)
-            cout << i + 1 << ". " << tasks[i].title << endl;
+    bool found = false;
+    for (int i = 0; i < *count; i++) {
+        if (tasks[i].priority == priority) {
+            found = true;
+            cout << "\n--- Task " << i + 1 << " ---\n";
+            cout << "Name: " << tasks[i].title << '\n';
+            cout << "Priority: " << tasks[i].priority << '\n';
+            cout << "Description: " << tasks[i].description << '\n';
+            cout << "Date: " << tasks[i].deadline << '\n';
+        }
+    }
+    if (!found) cout << "No matches found!\n";
 }
+
 // Пошук за описом
 void search_by_description(Task tasks[], int* count, const char desc[]) {
     cout << "\nSearch by description:\n";
-    for (int i = 0; i < *count; i++)
-        if (strstr(tasks[i].description, desc))
-            cout << i + 1 << ". " << tasks[i].title << endl;
+    bool found = false;
+    for (int i = 0; i < *count; i++) {
+        if (strstr(tasks[i].description, desc)) {
+            found = true;
+            cout << "\n--- Task " << i + 1 << " ---\n";
+            cout << "Name: " << tasks[i].title << '\n';
+            cout << "Priority: " << tasks[i].priority << '\n';
+            cout << "Description: " << tasks[i].description << '\n';
+            cout << "Date: " << tasks[i].deadline << '\n';
+        }
+    }
+    if (!found) cout << "No matches found!\n";
 }
 
 // Пошук за датою
 void search_by_date(Task tasks[], int* count, const char deadline[]) {
     cout << "\nSearch by date:\n";
-    for (int i = 0; i < *count; i++)
-        if (strcmp(tasks[i].deadline, deadline) == 0)
-            cout << i + 1 << ". " << tasks[i].title << endl;
+    bool found = false;
+    for (int i = 0; i < *count; i++) {
+        if (strcmp(tasks[i].deadline, deadline) == 0) {
+            found = true;
+            cout << "\n--- Task " << i + 1 << " ---\n";
+            cout << "Name: " << tasks[i].title << '\n';
+            cout << "Priority: " << tasks[i].priority << '\n';
+            cout << "Description: " << tasks[i].description << '\n';
+            cout << "Date: " << tasks[i].deadline << '\n';
+        }
+    }
+    if (!found) cout << "No matches found!\n";
 }
 
 // Відображення завдань на день

@@ -1,4 +1,5 @@
 #include "func.h"
+
 int main() {
     Task tasks[MAX_TASKS];
     int count = 0;
@@ -26,59 +27,72 @@ int main() {
         case 1:
             add_task(tasks, &count);
             break;
+
         case 2:
             show_task(tasks, &count);
             break;
+
         case 3:
-            cout << "Enter task index: ";
+            cout << "Enter number of task: ";
             cin >> index;
             edit_task(tasks, &count, index - 1);
             break;
+
         case 4:
-            cout << "Enter task index: ";
+            cout << "Enter number of task: ";
             cin >> index;
             remove_task(tasks, &count, index - 1);
             break;
+
         case 5:
             cout << "Enter part of title: ";
             cin.ignore();
             cin.getline(text, 100);
             search_by_title(tasks, &count, text);
             break;
+
         case 6:
             cout << "Enter priority: ";
             cin >> priority;
             search_by_priority(tasks, &count, priority);
             break;
+
         case 7:
             cout << "Enter part of description: ";
-            cin.ignore();
+            cin.ignore(); 
             cin.getline(text, 100);
             search_by_description(tasks, &count, text);
             break;
+
         case 8:
-            cout << "Enter date (YYYY-MM-DD): ";
+            cout << "Enter date (e.g. 2025-10-12 18:30): ";
             cin.ignore();
             cin.getline(text, 100);
             search_by_date(tasks, &count, text);
             break;
+
         case 9:
             cout << "Enter month (e.g. 2025-10): ";
             cin.ignore();
             cin.getline(text, 100);
             show_tasks_for_month(tasks, &count, text);
             break;
+
         case 10:
             sort_by_priority(tasks, &count);
             break;
+
         case 11:
             sort_by_deadline(tasks, &count);
             break;
+
         case 0:
             cout << "Goodbye!\n";
             return 0;
+
         default:
             cout << "Invalid choice!\n";
         }
     }
+    return 0;
 }
